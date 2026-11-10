@@ -1,0 +1,187 @@
+{
+  "date" : "2026-11-10",
+  "locale" : "zh_CN",
+  "os" : "27.3",
+  "results" : [
+    {
+      "api" : "SystemLanguageModel.default",
+      "category" : "大模型",
+      "detail" : "能力标记仅表示模型声明，不能替代真实请求。",
+      "id" : "system-default",
+      "raw" : "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent" : false,
+      "status" : "资格不通过",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "respond / streamResponse / @Generable / Tool",
+      "category" : "模型调用方式",
+      "detail" : "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id" : "system-default-generate",
+      "raw" : "",
+      "requestSent" : false,
+      "status" : "前置阻断",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "SystemLanguageModel(useCase: .general)",
+      "category" : "大模型",
+      "detail" : "能力标记仅表示模型声明，不能替代真实请求。",
+      "id" : "system-general",
+      "raw" : "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent" : false,
+      "status" : "资格不通过",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "respond / streamResponse / @Generable / Tool",
+      "category" : "模型调用方式",
+      "detail" : "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id" : "system-general-generate",
+      "raw" : "",
+      "requestSent" : false,
+      "status" : "前置阻断",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "SystemLanguageModel(useCase: .contentTagging)",
+      "category" : "大模型",
+      "detail" : "能力标记仅表示模型声明，不能替代真实请求。",
+      "id" : "system-tagging",
+      "raw" : "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent" : false,
+      "status" : "资格不通过",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "respond / streamResponse / @Generable / Tool",
+      "category" : "模型调用方式",
+      "detail" : "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id" : "system-tagging-generate",
+      "raw" : "",
+      "requestSent" : false,
+      "status" : "前置阻断",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "PrivateCloudComputeLanguageModel.availability",
+      "category" : "大模型",
+      "detail" : "本测试签名未包含 PCC 专用权限；仅查询状态，不发送云端生成。无法独立归因地区限制。",
+      "id" : "pcc",
+      "raw" : "unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.deviceNotEligible)",
+      "requestSent" : false,
+      "status" : "权限受限",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "com.apple.developer.private-cloud-compute",
+      "category" : "签名权限",
+      "detail" : "当前普通开发签名不含托管权限；以主机 codesign 导出的签名与 provisioning profile 为证。",
+      "id" : "pcc-permission",
+      "raw" : "",
+      "requestSent" : false,
+      "status" : "未配置",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "UIWritingToolsCoordinator.isWritingToolsAvailable",
+      "category" : "系统 AI 界面",
+      "detail" : "仅查询系统写作工具 UI 可用性，不等于完成改写或摘要。",
+      "id" : "writing-tools",
+      "raw" : "true",
+      "requestSent" : false,
+      "status" : "可用性为真",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "ImagePlaygroundViewController.isAvailable",
+      "category" : "系统 AI 界面",
+      "detail" : "仅查询图乐园界面资格，不生成图片。",
+      "id" : "image-playground",
+      "raw" : "false",
+      "requestSent" : false,
+      "status" : "可用性为假",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "SFSpeechRecognizer(zh-CN)",
+      "category" : "语音识别",
+      "detail" : "没有申请语音识别权限，也未启动旧版识别；支持标记不是转写成功证据。",
+      "id" : "legacy-speech",
+      "raw" : "isAvailable=true, supportsOnDeviceRecognition=true, authorizationStatus=0",
+      "requestSent" : false,
+      "status" : "能力查询完成",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "SpeechTranscriber",
+      "category" : "语音识别",
+      "detail" : "查询硬件、中文等价地区与已安装模型；不自动下载模型。",
+      "id" : "speech-transcriber",
+      "raw" : "isAvailable=true, supportedChinese=zh_CN, installedLocales=en_IE,en_ZA,en_IN,zh_TW,zh_CN,en_NZ,en_US,en_SG,en_GB,en_CA,en_AU",
+      "requestSent" : false,
+      "status" : "能力查询完成",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "DictationTranscriber",
+      "category" : "语音识别",
+      "detail" : "查询听写模型中文支持与已安装语言；本项未运行听写。",
+      "id" : "dictation-transcriber",
+      "raw" : "supportedChinese=zh_CN, installedLocales=ja_JP,en_US,zh_CN",
+      "requestSent" : false,
+      "status" : "能力查询完成",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "INPreferences",
+      "category" : "旧版 SiriKit",
+      "detail" : "负例实测：未配置 com.apple.developer.siri 时调用触发系统异常。此为签名要求，不是地区错误；本轮跳过该调用。",
+      "id" : "sirikit",
+      "raw" : "NSInternalInconsistencyException: requires the entitlement com.apple.developer.siri",
+      "requestSent" : false,
+      "status" : "缺少 Siri 权限",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "LanguageAvailability.status(en→zh-Hans)",
+      "category" : "翻译",
+      "detail" : "仅查询翻译资源状态，不等于翻译请求成功，也不是 Siri 模型接口。",
+      "id" : "translation",
+      "raw" : "supported",
+      "requestSent" : false,
+      "status" : "能力查询完成",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "TTS / SpeechAnalyzer",
+      "category" : "语音执行",
+      "detail" : "音频生成超时",
+      "id" : "speech-execution-error",
+      "raw" : "SiriAIProbe.ProbeModel.ProbeError.timeout",
+      "requestSent" : true,
+      "status" : "执行失败",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "ConnectivityIntent.perform()",
+      "category" : "Siri 操作入口",
+      "detail" : "直接调用 AppIntent 处理函数并写入事件。不能据此认定 Siri 语音或快捷指令执行成功。",
+      "id" : "intent-handler",
+      "raw" : "Intent-events.json 已新增基线事件",
+      "requestSent" : true,
+      "status" : "代码直调成功",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "Siri → App Shortcut → AppIntent",
+      "category" : "Siri 操作入口",
+      "detail" : "请对 Siri 说：用AI接口检测执行接口连通性测试。需结合 Siri 响应与新增事件确认，不把代码直调当作语音验收。",
+      "id" : "siri-voice",
+      "raw" : "",
+      "requestSent" : false,
+      "status" : "待人工触发",
+      "timestamp" : "2026-11-10"
+    }
+  ]
+}

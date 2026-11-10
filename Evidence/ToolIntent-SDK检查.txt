@@ -1,0 +1,13 @@
+work/ToolIntentProbe.swift:2:12: error: missing argument label 'schema:' in macro expansion
+1 | import AppIntents
+2 | @AppIntent(.tool)
+  |            `- error: missing argument label 'schema:' in macro expansion
+3 | struct ToolIntentProbe: AppIntent {
+4 |     static let title: LocalizedStringResource = "Connectivity Probe"
+
+work/ToolIntentProbe.swift:2:13: error: type 'AppSchemaIntent' has no member 'tool'
+1 | import AppIntents
+2 | @AppIntent(.tool)
+  |             `- error: type 'AppSchemaIntent' has no member 'tool'
+3 | struct ToolIntentProbe: AppIntent {
+4 |     static let title: LocalizedStringResource = "Connectivity Probe"

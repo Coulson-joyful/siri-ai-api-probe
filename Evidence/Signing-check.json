@@ -1,0 +1,11 @@
+{
+  "app": "com.example.siriaiprobe",
+  "pccEntitlementPresent": false,
+  "pccEntitlementValue": false,
+  "getTaskAllow": true,
+  "checkedEntitlementKeys": [
+    "application-identifier",
+    "com.apple.developer.team-identifier",
+    "get-task-allow"
+  ]
+}

@@ -1,0 +1,2 @@
+*** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Use of the class <INPreferences: [address removed]> from an app requires the entitlement com.apple.developer.siri. Did you enable the Siri capability in your Xcode project?'
+App terminated due to signal 6.

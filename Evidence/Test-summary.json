@@ -1,0 +1,146 @@
+[
+  {
+    "api": "Siri → App Shortcut",
+    "category": "动作入口",
+    "status": "可使用 · 人工验证",
+    "state": "ok",
+    "evidence": "用户收到预期固定响应；App 声明的连通性动作能通过 Siri 调用。",
+    "limit": "不调用大模型；不能证明 27.3 自然语言 ToolIntent 预览已通过。"
+  },
+  {
+    "api": "Writing Tools",
+    "category": "系统 AI 界面",
+    "status": "操作成功 · 人工验证",
+    "state": "ok",
+    "evidence": "isWritingToolsAvailable=true；用户在测试 App 中尝试写作工具并反馈成功。",
+    "limit": "未采集输出文本；后端模型、端侧／云端路径及具体操作种类未知。"
+  },
+  {
+    "api": "SystemLanguageModel.default",
+    "category": "端侧大模型",
+    "status": "本机不可用",
+    "state": "blocked",
+    "evidence": "availability=unavailable(.deviceNotEligible)；中文与英文支持检查均为 true。",
+    "limit": "资格检查阻止生成，无真实生成请求或 AI 回复。"
+  },
+  {
+    "api": "SystemLanguageModel(useCase: .general)",
+    "category": "端侧大模型",
+    "status": "本机不可用",
+    "state": "blocked",
+    "evidence": "与 default 同样返回 deviceNotEligible。",
+    "limit": "这是同一系统模型的用途配置，不是另一家模型服务。"
+  },
+  {
+    "api": "SystemLanguageModel(useCase: .contentTagging)",
+    "category": "端侧大模型",
+    "status": "本机不可用",
+    "state": "blocked",
+    "evidence": "内容标签用途仍返回 deviceNotEligible。",
+    "limit": "用途切换没有绕过资格检查。"
+  },
+  {
+    "api": "respond / streamResponse / @Generable / Tool",
+    "category": "模型调用方式",
+    "status": "被模型资格阻断",
+    "state": "blocked",
+    "evidence": "文本、流式、结构化、工具调用共享模型可用性前置条件。",
+    "limit": "它们不是四个独立模型；本轮没有逐个发送请求。"
+  },
+  {
+    "api": "PrivateCloudComputeLanguageModel",
+    "category": "云端大模型",
+    "status": "不可用，另缺专用权限",
+    "state": "blocked",
+    "evidence": "availability 返回 deviceNotEligible；实际签名没有 PCC entitlement。",
+    "limit": "无云端请求。普通开发签名还不满足官方列示的受支持测试分发条件，不能单独归因地区。"
+  },
+  {
+    "api": "ImagePlaygroundViewController",
+    "category": "图像生成界面",
+    "status": "本机可用性为 false",
+    "state": "blocked",
+    "evidence": "isAvailable=false。",
+    "limit": "没有生成图片；API 没有在本次返回单独的地区原因。"
+  },
+  {
+    "api": "AVSpeechSynthesizer.write",
+    "category": "中文语音合成",
+    "status": "两轮超时，未确认可用",
+    "state": "pending",
+    "evidence": "首轮与配置音频会话后的复测均在 20 秒内未完成。",
+    "limit": "仅能确定本测试条件下未成功；未隔离资源、系统测试版或测试代码因素，不认定地区封锁。"
+  },
+  {
+    "api": "SFSpeechRecognizer(zh-CN)",
+    "category": "旧版语音识别",
+    "status": "支持标记为 true",
+    "state": "partial",
+    "evidence": "isAvailable=true；supportsOnDeviceRecognition=true；授权状态为未决定。",
+    "limit": "未申请授权、未执行旧版识别；不作为实际转写成功。"
+  },
+  {
+    "api": "SpeechTranscriber + SpeechAnalyzer",
+    "category": "新版语音识别",
+    "status": "支持中文，资源未就绪",
+    "state": "partial",
+    "evidence": "isAvailable=true，中文等价地区为 zh_CN；具体模块 AssetInventory 状态为 supported。",
+    "limit": "虽然 installedLocales 列出中文，本次具体配置尚未达到 installed，固定音频识别未执行。"
+  },
+  {
+    "api": "DictationTranscriber",
+    "category": "听写模型",
+    "status": "中文支持查询通过",
+    "state": "partial",
+    "evidence": "支持 zh_CN，installedLocales 包含 zh_CN。",
+    "limit": "只查资源信息，没有运行听写。"
+  },
+  {
+    "api": "Translation / en → zh-Hans",
+    "category": "翻译模型",
+    "status": "支持，未安装就绪",
+    "state": "partial",
+    "evidence": "LanguageAvailability.status 返回 supported。",
+    "limit": "没有执行翻译；不是 Siri 对话模型。"
+  },
+  {
+    "api": "SiriKit / INPreferences",
+    "category": "旧版 Siri 接口",
+    "status": "缺少签名权限",
+    "state": "pending",
+    "evidence": "负例实测：无 com.apple.developer.siri 时抛系统异常。",
+    "limit": "最终测试版跳过该调用；这是工程签名条件，不是中国大陆限制。"
+  },
+  {
+    "api": "@AppIntent(.tool) / ToolIntent",
+    "category": "27.3 新预览",
+    "status": "本机 SDK 无法编译",
+    "state": "pending",
+    "evidence": "Xcode 27.2 只识别旧宏；编译报 AppSchemaIntent has no member tool。",
+    "limit": "没有在新 ToolIntent 路径下实测，不用普通 App Shortcut 成功代替。"
+  },
+  {
+    "api": "SiriEvaluations / SiriService",
+    "category": "27.3 自动评测",
+    "status": "本机 SDK 缺少模块",
+    "state": "pending",
+    "evidence": "实际编译返回 no such module SiriEvaluations。",
+    "limit": "用于测试 Siri 对动作／实体的调用，不是提供给产品使用的任意大模型接口。"
+  },
+  {
+    "api": "Shortcuts：On-Device / Cloud / Cloud Pro",
+    "category": "系统模型工作流",
+    "status": "官方提供，目标机未测",
+    "state": "pending",
+    "evidence": "当前 iPhone 官方文档列有三种系统模型选项。",
+    "limit": "本轮没有在手机快捷指令中逐一运行，不从 App 的 API 状态推断其结果。"
+  },
+  {
+    "api": "ChatGPT 扩展／扩展模型",
+    "category": "系统第三方扩展",
+    "status": "未测试",
+    "state": "pending",
+    "evidence": "Apple 文档将扩展模型与 Apple 模型分开，受扩展服务地区条件限制。",
+    "limit": "没有登录或调用扩展；不把 Siri 扩展当作可直接复用的通用第三方 API。"
+  }
+]

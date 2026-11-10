@@ -1,0 +1,297 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="国行 iPhone 16 Pro、iOS 27.3 的 Siri AI、Foundation Models、PCC 与系统智能接口独立真机测试报告。"><title>Siri AI 公开接口真机测试报告 · 2026-11-10</title><style>
+:root{--bg:#f3f5f5;--paper:#fff;--ink:#182e3a;--muted:#637782;--line:#dce4e6;--teal:#086a5b;--amber:#8a590c;--red:#a34038;--blue:#375e91}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--teal);text-underline-offset:4px}main{max-width:1180px;padding:48px 42px;margin:auto}.topline{display:flex;justify-content:space-between;gap:20px;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--teal)}header{border-top:3px solid var(--ink);border-bottom:1px solid var(--line);padding:20px 0 30px}h1{font-size:clamp(32px,5.2vw,58px);line-height:1.2;letter-spacing:-1.5px;margin:28px 0 20px}h1 span{font-weight:400;color:var(--muted)}.lead{font-size:18px;color:var(--muted);max-width:880px}.meta{display:flex;gap:8px 24px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:20px 0}.actions{display:flex;flex-wrap:wrap;gap:10px}button,.action{font:inherit;font-size:13px;padding:8px 14px;border:1px solid #bccdce;background:transparent;color:var(--ink);border-radius:6px;cursor:pointer;text-decoration:none}button:hover,.action:hover,button[aria-pressed="true"]{background:var(--ink);color:#fff}.verdict{padding:28px 30px;margin:30px 0;background:#e8f2ef;border:1px solid #c3dcd3;border-left:5px solid var(--teal);border-radius:8px}.kicker{font-size:12px;font-weight:700;color:var(--teal);letter-spacing:1.5px}.verdict h2{font-size:27px;line-height:1.5;margin:8px 0 14px}.verdict p{margin:10px 0}.small{font-size:13px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0 42px}.metric{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}.metric b{display:block;font-size:28px;line-height:1.4;margin:8px 0}.metric small{display:block;font-size:12px;color:var(--muted)}section{margin:42px 0}.section-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:20px}.section-head>span{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--teal)}.section-head h2{font-size:24px;margin:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff}h3{font-size:18px;margin:0 0 12px}p{margin:10px 0}dl{display:grid;grid-template-columns:90px 1fr;gap:10px 16px;margin:0;font-size:14px}dt{color:var(--muted)}dd{margin:0}.badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:12px;font-weight:600;line-height:1.7}.ok{color:#17694e;background:#e5f0e8}.blocked{color:#964036;background:#f8e8e2}.partial{color:#326080;background:#e7eff7}.pending{color:#835a12;background:#f7eedb}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.search{display:block;font:inherit;font-size:14px;width:100%;padding:12px 14px;border:1px solid #bdccd0;border-radius:6px;margin:12px 0;background:#fff}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;text-align:left}th,td{padding:16px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eaf0f0;font-size:12px;color:#546b76}th:first-child{width:26%}th:nth-child(2){width:16%}td strong{display:block;font-size:13px;overflow-wrap:anywhere}td small{display:block;margin-top:6px;color:var(--muted);font-size:11px}code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}code{font-size:.88em;overflow-wrap:anywhere}pre{background:#152934;color:#deecea;padding:22px;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.8;max-height:520px;overflow-y:auto}.note{background:#edf2f4;border-left:3px solid #819eaa;border-radius:4px;padding:16px 20px;font-size:14px;margin:20px 0}.warning{background:#faf2e6;border-color:#c6a362}.lists{padding-left:20px;font-size:14px}.lists li{padding:5px 0}.timeline{padding-left:20px;border-left:2px solid #c3d8d0;margin:20px 0}.timeline article{padding:0 0 20px 10px}.timeline time{font-size:12px;color:var(--teal);font-weight:600}.timeline h3{margin:3px 0;font-size:16px}.timeline p{font-size:13px;color:var(--muted);margin:4px 0}details{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin:16px 0}summary{cursor:pointer;font-size:14px;font-weight:600}.sources{display:grid;grid-template-columns:1fr 1fr;gap:16px 30px;padding-left:20px;font-size:13px}.sources li{padding:0 8px 6px}.sources p{font-size:12px;color:var(--muted);margin:4px 0}.checklist{counter-reset:step;padding:0;list-style:none}.checklist li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}.checklist li:before{counter-increment:step;content:counter(step,decimal-leading-zero);font-size:12px;font-weight:700;color:var(--teal);padding-top:3px}.checklist strong{display:block}.checklist p{font-size:13px;color:var(--muted);margin:3px 0}footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;padding-top:20px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:800px){main{padding:24px 20px}.topline{letter-spacing:1px}.grid,.sources{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric b{font-size:24px}.metric{padding:16px}.verdict{padding:22px}.verdict h2{font-size:23px}table{min-width:900px}footer{flex-direction:column}}@media print{body{background:#fff;font-size:10pt}main{padding:0;max-width:none}.actions,.filters,.search,.filter-count{display:none}h1{font-size:29pt}.lead{font-size:11pt}header{padding-bottom:14px}.verdict{padding:15px 20px;margin:20px 0}.verdict h2{font-size:17pt}.metrics{margin:20px 0;gap:10px}.metric{padding:12px}.metric b{font-size:18pt}section{margin:24px 0}.section-head h2{font-size:16pt}.panel{padding:16px}table{font-size:8pt;min-width:0}th,td{padding:9px 7px}td strong{font-size:8pt}.badge{font-size:7pt}.table-wrap{overflow:visible}.result-row[hidden]{display:table-row!important}pre{max-height:none;overflow:visible;color:#182e3a;background:#eef2f1;font-size:8pt}.metric,.panel,.verdict,tr,.timeline article{break-inside:avoid}a{text-decoration:none}.sources{font-size:9pt}.sources p,.small{font-size:8pt}footer{font-size:8pt}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body><main>
+<header><div class="topline"><span>SIRI AI / PUBLIC API VALIDATION</span><span>2026.11.10 · CHINA MAINLAND DEVICE</span></div><h1>Siri AI 公开接口<br><span>独立真机测试报告</span></h1><p class="lead">面向国行 iPhone 16 Pro 与 iOS 27.3 开发者测试版：区分当前能用的 Siri 操作入口、系统智能界面、App 可直接调用的大模型，以及仅在文档中开放的新预览能力。</p><div class="meta"><span>不涉及任何业务 App</span><span>设备：iPhone 16 Pro · iOS 27.3（24C5037i）</span><span>工具链：Xcode 27.2 / iOS SDK 27.2</span><span>报告日期：2026-11-10 · 脱敏发布版</span></div><div class="actions"><button onclick="window.print()">打印 / 另存为 PDF</button><a class="action" href="#matrix">查看接口矩阵</a><a class="action" href="#region">查看中国大陆限制</a><a class="action" href="#raw">查看脱敏证据</a></div></header>
+<div class="verdict"><div class="kicker">本次结论</div><h2>能用的是 Siri 快捷操作和写作工具体验；<br>尚无 App 直连大模型生成成功的证据。</h2><p><strong>人工验证：</strong>Siri 执行连通性 App Shortcut 并返回固定响应；测试 App 内写作工具操作成功。<strong>自动检测：</strong>端侧模型的三个配置均返回 <code>deviceNotEligible</code>；PCC 也不可用，且测试签名缺少专用权限。</p><p class="small">这些结果可以同时成立。不能把“Apple Intelligence 已开启”解释成全部模型接口开放，也不能因端侧接口不可用，就否定同一测试版中已操作成功的系统功能。</p></div>
+<div class="metrics"><div class="metric"><small>人工操作已反馈成功</small><b>2 项</b><small>Siri App Shortcut · 写作工具</small></div><div class="metric"><small>真实大模型生成成功</small><b>0 项</b><small>资格被阻断或权限未满足</small></div><div class="metric"><small>端侧用途／默认配置</small><b>3 / 3 受阻</b><small>是三个配置，不是三套独立模型</small></div><div class="metric"><small>27.3 新接口环境检查</small><b>2 项缺失</b><small>ToolIntent 新宏 · SiriEvaluations</small></div></div>
+<section><div class="section-head"><span>01</span><h2>证据标准与测试条件</h2></div><div class="grid"><div class="panel"><h3>这次具体测了什么</h3><dl><dt>测试 App</dt><dd>独立的“AI接口检测” / SiriAIProbe</dd><dt>自动矩阵</dt><dd>18 条运行记录；覆盖模型、系统 UI、语音、翻译和动作入口</dd><dt>音频复测</dt><dd>3 条记录；中文合成与固定文件转写准备条件</dd><dt>人工验证</dt><dd>匿名测试者实际操作 Siri 与写作工具后反馈</dd></dl></div><div class="panel"><h3>不能混用的四种证据</h3><dl><dt>操作成功</dt><dd>实际得到预期响应或完成人工操作</dd><dt>标记支持</dt><dd>语言／能力／资源接口返回支持；不等于请求成功</dd><dt>本机受阻</dt><dd>仅证明当前设备和测试条件下未成功</dd><dt>官方限制</dt><dd>按文档列明的设备、地区、账号、权限和分发条件解释</dd></dl></div></div><p class="small">国行购买地区、Apple Intelligence 已开启来自匿名测试者提供；系统版本和 API 返回值来自真机检测。未读取 Apple 账户地区，未验证实时地理位置，也没有非大陆设备对照；系统 Locale=zh_CN 不能证明这两项条件。</p></section>
+<section id="matrix"><div class="section-head"><span>02</span><h2>公开接口与模型入口矩阵</h2></div><p>重点看“得到什么证据”和“不能推出什么结论”。系统的语言支持、声明能力以及已安装语言信息，均不替代一次真实生成或转写。</p><div class="filters" role="group" aria-label="按测试结果筛选"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="ok" aria-pressed="false">人工操作成功</button><button data-filter="blocked" aria-pressed="false">当前调用受阻</button><button data-filter="partial" aria-pressed="false">仅支持／资源标记</button><button data-filter="pending" aria-pressed="false">权限／环境／待确认</button></div><label class="small" for="search">搜索接口或测试描述</label><input class="search" id="search" type="search" placeholder="例如：PCC、写作工具、Speech、ToolIntent"><p class="small filter-count" aria-live="polite" id="count">显示 18 / 18 项</p><div class="table-wrap"><table><thead><tr><th>接口／入口</th><th>本次结果</th><th>获得的证据</th><th>判定边界</th></tr></thead><tbody><tr class="result-row" data-state="ok"><td><strong>Siri → App Shortcut</strong><small>动作入口</small></td><td><span class="badge ok">可使用 · 人工验证</span></td><td>用户收到预期固定响应；App 声明的连通性动作能通过 Siri 调用。</td><td>不调用大模型；不能证明 27.3 自然语言 ToolIntent 预览已通过。</td></tr><tr class="result-row" data-state="ok"><td><strong>Writing Tools</strong><small>系统 AI 界面</small></td><td><span class="badge ok">操作成功 · 人工验证</span></td><td>isWritingToolsAvailable=true；匿名测试者在测试 App 中尝试写作工具并反馈成功。</td><td>未采集输出文本；后端模型、端侧／云端路径及具体操作种类未知。</td></tr><tr class="result-row" data-state="blocked"><td><strong>SystemLanguageModel.default</strong><small>端侧大模型</small></td><td><span class="badge blocked">本机不可用</span></td><td>availability=unavailable(.deviceNotEligible)；中文与英文支持检查均为 true。</td><td>资格检查阻止生成，无真实生成请求或 AI 回复。</td></tr><tr class="result-row" data-state="blocked"><td><strong>SystemLanguageModel(useCase: .general)</strong><small>端侧大模型</small></td><td><span class="badge blocked">本机不可用</span></td><td>与 default 同样返回 deviceNotEligible。</td><td>这是同一系统模型的用途配置，不是另一家模型服务。</td></tr><tr class="result-row" data-state="blocked"><td><strong>SystemLanguageModel(useCase: .contentTagging)</strong><small>端侧大模型</small></td><td><span class="badge blocked">本机不可用</span></td><td>内容标签用途仍返回 deviceNotEligible。</td><td>用途切换没有绕过资格检查。</td></tr><tr class="result-row" data-state="blocked"><td><strong>respond / streamResponse / @Generable / Tool</strong><small>模型调用方式</small></td><td><span class="badge blocked">被模型资格阻断</span></td><td>文本、流式、结构化、工具调用共享模型可用性前置条件。</td><td>它们不是四个独立模型；本轮没有逐个发送请求。</td></tr><tr class="result-row" data-state="blocked"><td><strong>PrivateCloudComputeLanguageModel</strong><small>云端大模型</small></td><td><span class="badge blocked">不可用，另缺专用权限</span></td><td>availability 返回 deviceNotEligible；实际签名没有 PCC entitlement。</td><td>无云端请求。普通开发签名还不满足官方列示的受支持测试分发条件，不能单独归因地区。</td></tr><tr class="result-row" data-state="blocked"><td><strong>ImagePlaygroundViewController</strong><small>图像生成界面</small></td><td><span class="badge blocked">本机可用性为 false</span></td><td>isAvailable=false。</td><td>没有生成图片；API 没有在本次返回单独的地区原因。</td></tr><tr class="result-row" data-state="pending"><td><strong>AVSpeechSynthesizer.write</strong><small>中文语音合成</small></td><td><span class="badge pending">两轮超时，未确认可用</span></td><td>首轮与配置音频会话后的复测均在 20 秒内未完成。</td><td>仅能确定本测试条件下未成功；未隔离资源、系统测试版或测试代码因素，不认定地区封锁。</td></tr><tr class="result-row" data-state="partial"><td><strong>SFSpeechRecognizer(zh-CN)</strong><small>旧版语音识别</small></td><td><span class="badge partial">支持标记为 true</span></td><td>isAvailable=true；supportsOnDeviceRecognition=true；授权状态为未决定。</td><td>未申请授权、未执行旧版识别；不作为实际转写成功。</td></tr><tr class="result-row" data-state="partial"><td><strong>SpeechTranscriber + SpeechAnalyzer</strong><small>新版语音识别</small></td><td><span class="badge partial">支持中文，资源未就绪</span></td><td>isAvailable=true，中文等价地区为 zh_CN；具体模块 AssetInventory 状态为 supported。</td><td>虽然 installedLocales 列出中文，本次具体配置尚未达到 installed，固定音频识别未执行。</td></tr><tr class="result-row" data-state="partial"><td><strong>DictationTranscriber</strong><small>听写模型</small></td><td><span class="badge partial">中文支持查询通过</span></td><td>支持 zh_CN，installedLocales 包含 zh_CN。</td><td>只查资源信息，没有运行听写。</td></tr><tr class="result-row" data-state="partial"><td><strong>Translation / en → zh-Hans</strong><small>翻译模型</small></td><td><span class="badge partial">支持，未安装就绪</span></td><td>LanguageAvailability.status 返回 supported。</td><td>没有执行翻译；不是 Siri 对话模型。</td></tr><tr class="result-row" data-state="pending"><td><strong>SiriKit / INPreferences</strong><small>旧版 Siri 接口</small></td><td><span class="badge pending">缺少签名权限</span></td><td>负例实测：无 com.apple.developer.siri 时抛系统异常。</td><td>最终测试版跳过该调用；这是工程签名条件，不是中国大陆限制。</td></tr><tr class="result-row" data-state="pending"><td><strong>@AppIntent(.tool) / ToolIntent</strong><small>27.3 新预览</small></td><td><span class="badge pending">本机 SDK 无法编译</span></td><td>Xcode 27.2 只识别旧宏；编译报 AppSchemaIntent has no member tool。</td><td>没有在新 ToolIntent 路径下实测，不用普通 App Shortcut 成功代替。</td></tr><tr class="result-row" data-state="pending"><td><strong>SiriEvaluations / SiriService</strong><small>27.3 自动评测</small></td><td><span class="badge pending">本机 SDK 缺少模块</span></td><td>实际编译返回 no such module SiriEvaluations。</td><td>用于测试 Siri 对动作／实体的调用，不是提供给产品使用的任意大模型接口。</td></tr><tr class="result-row" data-state="pending"><td><strong>Shortcuts：On-Device / Cloud / Cloud Pro</strong><small>系统模型工作流</small></td><td><span class="badge pending">官方提供，目标机未测</span></td><td>当前 iPhone 官方文档列有三种系统模型选项。</td><td>本轮没有在手机快捷指令中逐一运行，不从 App 的 API 状态推断其结果。</td></tr><tr class="result-row" data-state="pending"><td><strong>ChatGPT 扩展／扩展模型</strong><small>系统第三方扩展</small></td><td><span class="badge pending">未测试</span></td><td>Apple 文档将扩展模型与 Apple 模型分开，受扩展服务地区条件限制。</td><td>没有登录或调用扩展；不把 Siri 扩展当作可直接复用的通用第三方 API。</td></tr></tbody></table></div><div class="note"><strong>能力声明与实际可用性不同：</strong>端侧模型在资格失败时，仍报告 <code>guidedGeneration=true</code>、<code>toolCalling=true</code>、<code>vision=true</code>、<code>reasoning=false</code>。这些只说明声明能力，不是本机已能使用这些功能。</div></section>
+<section id="region"><div class="section-head"><span>03</span><h2>哪些是中国大陆限制，哪些不是</h2></div><div class="grid"><div class="panel"><h3>官方明确列出的限制</h3><ul class="lists"><li><strong>Apple Intelligence：</strong>当前公开支持页仍说明，中国大陆购买的支持设备受限；非大陆购买设备在身处大陆且 Apple 账户地区也为大陆时同样受限。<a href="https://support.apple.com/zh-cn/121115">官方条件</a></li><li><strong>Siri AI：</strong>当前支持页说明，Apple 账户地区为中国大陆时不可用。<a href="https://support.apple.com/en-us/127893">官方条件</a></li><li><strong>Siri AI 语言：</strong>当前 27.3 公告与支持页列出英语、法语、日语、韩语、葡萄牙语和西班牙语；未将简体中文列为新 Siri AI 的支持语言。Apple Intelligence 整体支持简体中文并不等于 Siri AI 也支持。<a href="https://developer.apple.com/news/?id=gdk2umrf">最新预览公告</a></li><li><strong>ChatGPT 扩展：</strong>还受扩展服务本身的地区可用性限制；本次未测试，不能承诺大陆设备可用。<a href="https://support.apple.com/en-gb/guide/iphone/iph00fd3c8c2/27/ios/27">Apple 扩展说明</a></li></ul></div><div class="panel"><h3>不能直接归为地区限制的结果</h3><ul class="lists"><li><code>deviceNotEligible</code> 没有给出独立的地区原因字段；不能由它确定唯一原因。</li><li>PCC 缺少托管权限、测试分发条件不满足，属于开发者／工程条件。</li><li>缺少 SiriKit entitlement 是签名问题；不是大陆封锁。</li><li>27.3 新 API 在 27.2 SDK 中不能编译，是工具链条件。</li><li>语音资源未就绪、单次或重复超时，需要继续排查，不能据此宣布整类 API 在大陆不可用。</li></ul></div></div><div class="note warning"><strong>公开限制与测试版局部表现存在差异：</strong>本次用户在国行测试设备上已操作成功 Siri 快捷操作和写作工具。报告保留该事实，同时保留官方限制；不会据此推断所有国行设备、所有账号或所有模型接口都已开放。普通 Siri 快捷操作成功也不等于新 Siri AI 的所有功能成功。</div></section>
+<section><div class="section-head"><span>04</span><h2>iOS 27.3 新预览：已核对，尚未具备实测环境</h2></div><p>Apple 于 2026 年 11 月 3 日发布 Siri AI 开发者预览。新的接入方向是让 Siri 调用 App 明确提供的工具、查找实体及组合动作；它与 App 内直接发 prompt 给 Foundation Models 是不同路径。<a href="https://developer.apple.com/news/?id=gdk2umrf">官方公告</a></p><div class="grid"><div class="panel"><h3>自定义 Siri 工具</h3><p><code>@AppIntent(.tool)</code> 将动作标记为 Siri 可调用的工具。当前主机 SDK 只有 27.2，本次编译负例确认缺少新宏签名。</p><p class="small">已成功的 App Shortcut 是标准快捷操作入口，不能代替这项新预览的自然语言规划与工具调用验收。</p></div><div class="panel"><h3>Siri 自动化评测</h3><p><code>SiriEvaluations</code> 能脚本化请求并检查 Siri 调用了什么动作、找到什么实体、回复了什么。本机编译确认没有该模块。</p><p class="small">这属于开发评测接口，不能当作产品中绕开地区或模型资格的任意对话 API。</p></div></div><p class="small">开发者预览还限定支持设备／地区与分发方式；官方文档允许开发签名和内部 TestFlight 测试，并未对外部 TestFlight 或商店用户开放此预览。此次没有安装匹配的 27.3 SDK，也未修改系统设置来尝试绕过限制。<a href="https://developer.apple.com/documentation/appintents/siri-ai-developer-preview">预览条件</a></p><details><summary>展开：本机实际编译检查结果</summary><pre>work/SiriEvaluationsImport.swift:1:8: error: no such module &#x27;SiriEvaluations&#x27;
+1 | import SiriEvaluations
+  |        `- error: no such module &#x27;SiriEvaluations&#x27;
+2 | 
+
+work/ToolIntentProbe.swift:2:12: error: missing argument label &#x27;schema:&#x27; in macro expansion
+1 | import AppIntents
+2 | @AppIntent(.tool)
+  |            `- error: missing argument label &#x27;schema:&#x27; in macro expansion
+3 | struct ToolIntentProbe: AppIntent {
+4 |     static let title: LocalizedStringResource = &quot;Connectivity Probe&quot;
+
+work/ToolIntentProbe.swift:2:13: error: type &#x27;AppSchemaIntent&#x27; has no member &#x27;tool&#x27;
+1 | import AppIntents
+2 | @AppIntent(.tool)
+  |             `- error: type &#x27;AppSchemaIntent&#x27; has no member &#x27;tool&#x27;
+3 | struct ToolIntentProbe: AppIntent {
+4 |     static let title: LocalizedStringResource = &quot;Connectivity Probe&quot;
+</pre></details></section>
+<section><div class="section-head"><span>05</span><h2>真实操作与专项测试记录</h2></div><div class="timeline"><article><time>2026-11-10 · 自动矩阵</time><h3>模型资格与系统功能标记</h3><p>default、general、contentTagging 均返回 deviceNotEligible；PCC 不可用且缺少托管权限；写作工具为 true，图乐园为 false。</p></article><article><time>2026-11-10 · 匿名人工反馈记录</time><h3>Siri 快捷动作与写作工具人工成功</h3><p>Siri 响应：“接口连通性测试成功。这是固定响应，没有调用大模型。”用户另对写作工具操作反馈“成功”。没有采集具体改写文本，未判断使用哪个后端模型。</p></article><article><time>2026-11-10 · 音频专项复测</time><h3>中文合成超时；语音识别资源未满足执行条件</h3><p>复测使用基础中文声音及活跃音频会话，仍在 20 秒内未完成。SpeechTranscriber 的中文具体模块资源为 supported，未达到 installed，因此没有自动下载或执行文件识别。</p></article></div><div class="note"><strong>连通性事件的证据边界：</strong>测试 App 的代码直调、Siri 与快捷指令共用同一个处理函数，事件文件不能独立区分入口。因此 Siri 成功结论依赖人工反馈的预期响应，事件时间仅作辅助证据，不作为独立的 Siri 路由证明。</div><div class="grid"><div class="panel"><h3>端侧模型</h3><pre>SystemLanguageModel.default.availability
+→ unavailable(.deviceNotEligible)
+
+supportsLocale(zh-Hans-CN) → true
+supportsLocale(en-US)     → true
+
+真实模型生成请求：未发送</pre></div><div class="panel"><h3>PCC 与系统界面</h3><pre>PCC availability
+→ unavailable(.deviceNotEligible)
+
+PCC 签名权限 → false
+Writing Tools → true + 人工成功
+Image Playground → false</pre></div></div></section>
+<section><div class="section-head"><span>06</span><h2>开发时现在可以采用什么</h2></div><div class="grid"><div class="panel"><h3>可以推进的接入</h3><ul class="lists"><li><strong>Siri 执行动作：</strong>标准 App Intents + App Shortcuts 可作为目前已得到人工验证的入口。为每个真实业务动作单独验证参数与权限。</li><li><strong>用户发起文本润色：</strong>系统文本控件的写作工具路径值得使用；本次已人工操作成功。</li><li><strong>基础语音／翻译：</strong>公开 API 的支持检查能返回信息，但需要补齐资源或继续排查后，再以真实结果决定是否采用。</li></ul></div><div class="panel"><h3>暂不能承诺的能力</h3><ul class="lists"><li><strong>App 内任意 prompt 生成：</strong>本机 Foundation Models 端侧接口未开放资格；不能以写作工具成功替代。</li><li><strong>PCC 云端推理：</strong>先取得 Apple 托管权限与符合条件的测试分发，再在目标设备验证。</li><li><strong>Siri 任意内部模型选择：</strong>本次核对的公开接入路径不提供一个通用的“选择 Siri 内部供应商／型号并发请求”的生产 API。</li><li><strong>27.3 新工具规划：</strong>需要匹配 SDK 和支持 Siri AI 的环境，不能从旧快捷动作成功外推。</li></ul></div></div><p class="small">写作工具是用户可见的系统交互，不是可以在后台静默调用的通用生成替代品；Shortcuts 的模型选项也是用户工作流入口，不能直接等同于 App 的模型 API。</p></section>
+<section><div class="section-head"><span>07</span><h2>尚需补测的具体项目</h2></div><ol class="checklist"><li><div><strong>匹配的 27.3 开发工具链</strong><p>升级后重新编译 ToolIntent 与 SiriEvaluations，先验证一个固定响应动作，再测自然语言变体、参数和实体查找。</p></div></li><li><div><strong>快捷指令中的四类模型入口</strong><p>在 iPhone 的“使用模型”动作中，分别记录 On-Device、Cloud、Cloud Pro、Extension Model 是否出现、能否运行及错误提示。固定提示可用“用一句话描述雨后的花园”。本轮均未执行，不填造结果。</p></div></li><li><div><strong>PCC 的权限与分发对照</strong><p>取得权限后按官方支持的 TestFlight 或 ad hoc 路径验证，再比较设备购买地、账号地区、语言和实际地区条件。无需为了本报告更改现有账号。</p></div></li><li><div><strong>语音资源与合成问题</strong><p>检查具体中文模块资源与声音下载状态，补测普通播放和缓冲区生成，再执行固定音频转写；两次超时仍不足以定位地区原因。</p></div></li><li><div><strong>写作工具输出与离线表现</strong><p>补采实际变更文本和操作种类；如需区分端侧／云端，可设计联网与离线对照。当前没有后端或离线能力结论。</p></div></li></ol></section>
+<section id="raw"><div class="section-head"><span>08</span><h2>脱敏证据与可复现性</h2></div><p>独立工程已完成真机编译、签名、安装和启动。发布版保留系统错误与测试结论，精确活动时间已统一降为测试日期；账号、签名个人信息和本机路径已移除。没有采集账号标识、实时位置、麦克风录音或个人文档。</p><details><summary>展开：自动矩阵、音频复测、人工反馈与签名检查 JSON</summary><pre>{
+  &quot;deviceMatrix&quot;: {
+    &quot;date&quot;: &quot;2026-11-10&quot;,
+    &quot;locale&quot;: &quot;zh_CN&quot;,
+    &quot;os&quot;: &quot;27.3&quot;,
+    &quot;results&quot;: [
+      {
+        &quot;api&quot;: &quot;SystemLanguageModel.default&quot;,
+        &quot;category&quot;: &quot;大模型&quot;,
+        &quot;detail&quot;: &quot;能力标记仅表示模型声明，不能替代真实请求。&quot;,
+        &quot;id&quot;: &quot;system-default&quot;,
+        &quot;raw&quot;: &quot;availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;资格不通过&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;respond / streamResponse / @Generable / Tool&quot;,
+        &quot;category&quot;: &quot;模型调用方式&quot;,
+        &quot;detail&quot;: &quot;这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。&quot;,
+        &quot;id&quot;: &quot;system-default-generate&quot;,
+        &quot;raw&quot;: &quot;&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;前置阻断&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;SystemLanguageModel(useCase: .general)&quot;,
+        &quot;category&quot;: &quot;大模型&quot;,
+        &quot;detail&quot;: &quot;能力标记仅表示模型声明，不能替代真实请求。&quot;,
+        &quot;id&quot;: &quot;system-general&quot;,
+        &quot;raw&quot;: &quot;availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;资格不通过&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;respond / streamResponse / @Generable / Tool&quot;,
+        &quot;category&quot;: &quot;模型调用方式&quot;,
+        &quot;detail&quot;: &quot;这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。&quot;,
+        &quot;id&quot;: &quot;system-general-generate&quot;,
+        &quot;raw&quot;: &quot;&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;前置阻断&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;SystemLanguageModel(useCase: .contentTagging)&quot;,
+        &quot;category&quot;: &quot;大模型&quot;,
+        &quot;detail&quot;: &quot;能力标记仅表示模型声明，不能替代真实请求。&quot;,
+        &quot;id&quot;: &quot;system-tagging&quot;,
+        &quot;raw&quot;: &quot;availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.deviceNotEligible); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;资格不通过&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;respond / streamResponse / @Generable / Tool&quot;,
+        &quot;category&quot;: &quot;模型调用方式&quot;,
+        &quot;detail&quot;: &quot;这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。&quot;,
+        &quot;id&quot;: &quot;system-tagging-generate&quot;,
+        &quot;raw&quot;: &quot;&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;前置阻断&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;PrivateCloudComputeLanguageModel.availability&quot;,
+        &quot;category&quot;: &quot;大模型&quot;,
+        &quot;detail&quot;: &quot;本测试签名未包含 PCC 专用权限；仅查询状态，不发送云端生成。无法独立归因地区限制。&quot;,
+        &quot;id&quot;: &quot;pcc&quot;,
+        &quot;raw&quot;: &quot;unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.deviceNotEligible)&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;权限受限&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;com.apple.developer.private-cloud-compute&quot;,
+        &quot;category&quot;: &quot;签名权限&quot;,
+        &quot;detail&quot;: &quot;当前普通开发签名不含托管权限；以主机 codesign 导出的签名与 provisioning profile 为证。&quot;,
+        &quot;id&quot;: &quot;pcc-permission&quot;,
+        &quot;raw&quot;: &quot;&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;未配置&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;UIWritingToolsCoordinator.isWritingToolsAvailable&quot;,
+        &quot;category&quot;: &quot;系统 AI 界面&quot;,
+        &quot;detail&quot;: &quot;仅查询系统写作工具 UI 可用性，不等于完成改写或摘要。&quot;,
+        &quot;id&quot;: &quot;writing-tools&quot;,
+        &quot;raw&quot;: &quot;true&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;可用性为真&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;ImagePlaygroundViewController.isAvailable&quot;,
+        &quot;category&quot;: &quot;系统 AI 界面&quot;,
+        &quot;detail&quot;: &quot;仅查询图乐园界面资格，不生成图片。&quot;,
+        &quot;id&quot;: &quot;image-playground&quot;,
+        &quot;raw&quot;: &quot;false&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;可用性为假&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;SFSpeechRecognizer(zh-CN)&quot;,
+        &quot;category&quot;: &quot;语音识别&quot;,
+        &quot;detail&quot;: &quot;没有申请语音识别权限，也未启动旧版识别；支持标记不是转写成功证据。&quot;,
+        &quot;id&quot;: &quot;legacy-speech&quot;,
+        &quot;raw&quot;: &quot;isAvailable=true, supportsOnDeviceRecognition=true, authorizationStatus=0&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;能力查询完成&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;SpeechTranscriber&quot;,
+        &quot;category&quot;: &quot;语音识别&quot;,
+        &quot;detail&quot;: &quot;查询硬件、中文等价地区与已安装模型；不自动下载模型。&quot;,
+        &quot;id&quot;: &quot;speech-transcriber&quot;,
+        &quot;raw&quot;: &quot;isAvailable=true, supportedChinese=zh_CN, installedLocales=en_IE,en_ZA,en_IN,zh_TW,zh_CN,en_NZ,en_US,en_SG,en_GB,en_CA,en_AU&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;能力查询完成&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;DictationTranscriber&quot;,
+        &quot;category&quot;: &quot;语音识别&quot;,
+        &quot;detail&quot;: &quot;查询听写模型中文支持与已安装语言；本项未运行听写。&quot;,
+        &quot;id&quot;: &quot;dictation-transcriber&quot;,
+        &quot;raw&quot;: &quot;supportedChinese=zh_CN, installedLocales=ja_JP,en_US,zh_CN&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;能力查询完成&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;INPreferences&quot;,
+        &quot;category&quot;: &quot;旧版 SiriKit&quot;,
+        &quot;detail&quot;: &quot;负例实测：未配置 com.apple.developer.siri 时调用触发系统异常。此为签名要求，不是地区错误；本轮跳过该调用。&quot;,
+        &quot;id&quot;: &quot;sirikit&quot;,
+        &quot;raw&quot;: &quot;NSInternalInconsistencyException: requires the entitlement com.apple.developer.siri&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;缺少 Siri 权限&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;LanguageAvailability.status(en→zh-Hans)&quot;,
+        &quot;category&quot;: &quot;翻译&quot;,
+        &quot;detail&quot;: &quot;仅查询翻译资源状态，不等于翻译请求成功，也不是 Siri 模型接口。&quot;,
+        &quot;id&quot;: &quot;translation&quot;,
+        &quot;raw&quot;: &quot;supported&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;能力查询完成&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;TTS / SpeechAnalyzer&quot;,
+        &quot;category&quot;: &quot;语音执行&quot;,
+        &quot;detail&quot;: &quot;音频生成超时&quot;,
+        &quot;id&quot;: &quot;speech-execution-error&quot;,
+        &quot;raw&quot;: &quot;SiriAIProbe.ProbeModel.ProbeError.timeout&quot;,
+        &quot;requestSent&quot;: true,
+        &quot;status&quot;: &quot;执行失败&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;ConnectivityIntent.perform()&quot;,
+        &quot;category&quot;: &quot;Siri 操作入口&quot;,
+        &quot;detail&quot;: &quot;直接调用 AppIntent 处理函数并写入事件。不能据此认定 Siri 语音或快捷指令执行成功。&quot;,
+        &quot;id&quot;: &quot;intent-handler&quot;,
+        &quot;raw&quot;: &quot;Intent-events.json 已新增基线事件&quot;,
+        &quot;requestSent&quot;: true,
+        &quot;status&quot;: &quot;代码直调成功&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;Siri → App Shortcut → AppIntent&quot;,
+        &quot;category&quot;: &quot;Siri 操作入口&quot;,
+        &quot;detail&quot;: &quot;请对 Siri 说：用AI接口检测执行接口连通性测试。需结合 Siri 响应与新增事件确认，不把代码直调当作语音验收。&quot;,
+        &quot;id&quot;: &quot;siri-voice&quot;,
+        &quot;raw&quot;: &quot;&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;待人工触发&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      }
+    ]
+  },
+  &quot;audioRetest&quot;: {
+    &quot;date&quot;: &quot;2026-11-10&quot;,
+    &quot;locale&quot;: &quot;zh_CN&quot;,
+    &quot;os&quot;: &quot;27.3&quot;,
+    &quot;results&quot;: [
+      {
+        &quot;api&quot;: &quot;AVSpeechSynthesisVoice.speechVoices&quot;,
+        &quot;category&quot;: &quot;语音合成&quot;,
+        &quot;detail&quot;: &quot;仅列出中文语音资源；不等于每种声音都已实测。&quot;,
+        &quot;id&quot;: &quot;tts-voices&quot;,
+        &quot;raw&quot;: &quot;com.apple.voice.compact.zh-CN.Tingting:1\ncom.apple.eloquence.zh-CN.Eddy:1\ncom.apple.eloquence.zh-CN.Flo:1\ncom.apple.eloquence.zh-CN.Grandma:1\ncom.apple.eloquence.zh-CN.Grandpa:1\ncom.apple.eloquence.zh-CN.Reed:1\ncom.apple.eloquence.zh-CN.Rocko:1\ncom.apple.eloquence.zh-CN.Sandy:1\ncom.apple.eloquence.zh-CN.Shelley:1\ncom.apple.ttsbundle.siri_Li-mu_zh-CN_compact:1\ncom.apple.ttsbundle.siri_Yu-shu_zh-CN_compact:1\ncom.apple.voice.super-compact.zh-TW.Meijia:1\ncom.apple.eloquence.zh-TW.Eddy:1\ncom.apple.eloquence.zh-TW.Flo:1\ncom.apple.eloquence.zh-TW.Grandma:1\ncom.apple.eloquence.zh-TW.Grandpa:1\ncom.apple.eloquence.zh-TW.Reed:1\ncom.apple.eloquence.zh-TW.Rocko:1\ncom.apple.eloquence.zh-TW.Sandy:1\ncom.apple.eloquence.zh-TW.Shelley:1&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;能力查询完成&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;AVSpeechSynthesizer.write&quot;,
+        &quot;category&quot;: &quot;语音合成&quot;,
+        &quot;detail&quot;: &quot;配置音频会话后的复测结果：音频生成超时&quot;,
+        &quot;id&quot;: &quot;tts-retry&quot;,
+        &quot;raw&quot;: &quot;SiriAIProbe.ProbeModel.ProbeError.timeout&quot;,
+        &quot;requestSent&quot;: true,
+        &quot;status&quot;: &quot;执行失败&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      },
+      {
+        &quot;api&quot;: &quot;SpeechAnalyzer + SpeechTranscriber&quot;,
+        &quot;category&quot;: &quot;语音识别&quot;,
+        &quot;detail&quot;: &quot;所需模型未安装，不自动下载。&quot;,
+        &quot;id&quot;: &quot;asr-fixture&quot;,
+        &quot;raw&quot;: &quot;supported&quot;,
+        &quot;requestSent&quot;: false,
+        &quot;status&quot;: &quot;未执行&quot;,
+        &quot;timestamp&quot;: &quot;2026-11-10&quot;
+      }
+    ]
+  },
+  &quot;manualFeedback&quot;: {
+    &quot;source&quot;: &quot;匿名测试者人工验证反馈&quot;,
+    &quot;siriShortcut&quot;: {
+      &quot;result&quot;: &quot;人工反馈成功&quot;,
+      &quot;heardReply&quot;: &quot;接口连通性测试成功。这是固定响应，没有调用大模型&quot;,
+      &quot;limitation&quot;: &quot;仅验证标准 Siri App Shortcut 路由；没有验证 27.3 ToolIntent 新预览或大模型生成&quot;
+    },
+    &quot;writingTools&quot;: {
+      &quot;result&quot;: &quot;人工反馈成功&quot;,
+      &quot;limitation&quot;: &quot;未采集实际改写文本或屏幕录像，无法确认模型后端与具体操作种类&quot;
+    },
+    &quot;feedbackDate&quot;: &quot;2026-11-10&quot;
+  },
+  &quot;signing&quot;: {
+    &quot;app&quot;: &quot;com.example.siriaiprobe&quot;,
+    &quot;pccEntitlementPresent&quot;: false,
+    &quot;pccEntitlementValue&quot;: false,
+    &quot;getTaskAllow&quot;: true,
+    &quot;checkedEntitlementKeys&quot;: [
+      &quot;application-identifier&quot;,
+      &quot;com.apple.developer.team-identifier&quot;,
+      &quot;get-task-allow&quot;
+    ]
+  }
+}</pre></details><p class="small">配套工程中，正常启动执行自动矩阵；启动参数 <code>--audio-fixture</code> 执行独立音频复测。<code>requestSent</code> 表示该记录实际执行了请求／函数，不表示有网络传输，也不表示执行成功。模型前置阻断记录均为 false。最终版本不调用会因缺少 SiriKit 权限而抛异常的 INPreferences。</p></section>
+<section><div class="section-head"><span>09</span><h2>本次核对的 Apple 官方来源</h2></div><p class="small">核对日期：2026-11-10。系统测试版的局部表现、公开支持页、开发者资格与 SDK 能力分别记录；不假设它们已完全同步。</p><ol class="sources"><li><a href="https://support.apple.com/zh-cn/121115" target="_blank" rel="noopener noreferrer">Apple Intelligence 地区说明</a><p>公开说明仍列出中国大陆购买设备限制；设备购买地、Apple 账户地区和所在地区是不同条件。</p></li><li><a href="https://support.apple.com/en-us/127893" target="_blank" rel="noopener noreferrer">Siri AI 支持语言与地区</a><p>当前页面列出六种支持语言，并说明 Apple 账户地区为中国大陆时 Siri AI 不可用。</p></li><li><a href="https://developer.apple.com/news/?id=gdk2umrf" target="_blank" rel="noopener noreferrer">27.3 开发者预览公告（2026-11-03）</a><p>新预览向开发者开放的是 App 内容与动作接入；不等于开放任意 Siri 内部后端模型选择。</p></li><li><a href="https://developer.apple.com/documentation/appintents/siri-ai-developer-preview" target="_blank" rel="noopener noreferrer">Siri AI Developer Preview</a><p>仅在支持设备与地区提供；开发签名与内部 TestFlight 可测试，外部 TestFlight／商店用户不属于该预览的开放对象。</p></li><li><a href="https://developer.apple.com/documentation/appintents/bringing-custom-actions-and-content-to-siri" target="_blank" rel="noopener noreferrer">Siri ToolIntent</a><p>@AppIntent(.tool) 将自定义动作标记为 Siri 可调用工具。</p></li><li><a href="https://developer.apple.com/documentation/sirievaluations" target="_blank" rel="noopener noreferrer">Siri Evaluations</a><p>通过脚本对话测试 Siri 的意图调用、实体查找和回复，要求匹配的新工具链。</p></li><li><a href="https://developer.apple.com/private-cloud-compute/" target="_blank" rel="noopener noreferrer">PCC 资格与分发条件</a><p>需满足小型企业计划、下载量条件及专用权限；测试分发路径包括 TestFlight 与 ad hoc，以官方说明为准。</p></li><li><a href="https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.private-cloud-compute" target="_blank" rel="noopener noreferrer">PCC 托管权限</a><p>com.apple.developer.private-cloud-compute 需申请，不能仅手工添加布尔值取得权限。</p></li><li><a href="https://developer.apple.com/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models" target="_blank" rel="noopener noreferrer">Foundation Models 生成与可用性</a><p>在模型可用时才发起生成，并准备不可用时的替代体验。</p></li><li><a href="https://support.apple.com/guide/shortcuts/use-apple-intelligence-in-shortcuts-tpg3vrvwmclv/ios" target="_blank" rel="noopener noreferrer">Shortcuts 模型选项</a><p>iPhone 文档列有 On-Device、Cloud、Cloud Pro 和 Extension Model；这是用户工作流中的模型选项。</p></li><li><a href="https://developer.apple.com/news/?id=dz9wvq0r" target="_blank" rel="noopener noreferrer">ImageCreator 终止公告</a><p>Apple 已宣布旧 ImageCreator 非 UI 接口不再适用于 iOS 27；推荐系统图乐园界面。</p></li><li><a href="https://developer.apple.com/documentation/uikit/uiwritingtoolscoordinator" target="_blank" rel="noopener noreferrer">写作工具系统界面</a><p>通过系统文本控件／协调器接入写作体验，不能视为任意后台 prompt 接口。</p></li><li><a href="https://developer.apple.com/documentation/speech/speechtranscriber" target="_blank" rel="noopener noreferrer">SpeechTranscriber</a><p>检查硬件、语言与已安装资源；这些条件仍需与实际转写结果区分。</p></li><li><a href="https://developer.apple.com/documentation/sirikit" target="_blank" rel="noopener noreferrer">SiriKit 与现代 App Intents</a><p>旧 SiriKit 保留兼容支持；现代 Siri AI 接入采用 App Intents。</p></li></ol></section>
+<footer><div>Siri AI 公开接口独立测试 · 2026-11-10<br>仅对本设备、本版本和本次测试条件负责</div><div>单文件 HTML · 无外部脚本／字体依赖<br>官方资料链接需要联网 · 支持打印</div></footer>
+</main><script>
+(()=>{let selected='all';const search=document.getElementById('search');const rows=[...document.querySelectorAll('.result-row')];const buttons=[...document.querySelectorAll('[data-filter]')];function apply(){const q=search.value.trim().toLowerCase();let count=0;for(const row of rows){const show=(selected==='all'||row.dataset.state===selected)&&row.textContent.toLowerCase().includes(q);row.hidden=!show;if(show)count++;}document.getElementById('count').textContent=`显示 ${count} / ${rows.length} 项`;}for(const button of buttons){button.addEventListener('click',()=>{selected=button.dataset.filter;for(const other of buttons)other.setAttribute('aria-pressed',String(other===button));apply();});}search.addEventListener('input',apply);apply();})();
+</script></body></html>

@@ -1,0 +1,61 @@
+{
+  "checkedDate": "2026-11-10",
+  "sources": [
+    {
+      "title": "Apple Intelligence 地区说明",
+      "url": "https://support.apple.com/zh-cn/121115"
+    },
+    {
+      "title": "Siri AI 支持语言与地区",
+      "url": "https://support.apple.com/en-us/127893"
+    },
+    {
+      "title": "27.3 开发者预览公告（2026-11-03）",
+      "url": "https://developer.apple.com/news/?id=gdk2umrf"
+    },
+    {
+      "title": "Siri AI Developer Preview",
+      "url": "https://developer.apple.com/documentation/appintents/siri-ai-developer-preview"
+    },
+    {
+      "title": "Siri ToolIntent",
+      "url": "https://developer.apple.com/documentation/appintents/bringing-custom-actions-and-content-to-siri"
+    },
+    {
+      "title": "Siri Evaluations",
+      "url": "https://developer.apple.com/documentation/sirievaluations"
+    },
+    {
+      "title": "PCC 资格与分发条件",
+      "url": "https://developer.apple.com/private-cloud-compute/"
+    },
+    {
+      "title": "PCC 托管权限",
+      "url": "https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.private-cloud-compute"
+    },
+    {
+      "title": "Foundation Models 生成与可用性",
+      "url": "https://developer.apple.com/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models"
+    },
+    {
+      "title": "Shortcuts 模型选项",
+      "url": "https://support.apple.com/guide/shortcuts/use-apple-intelligence-in-shortcuts-tpg3vrvwmclv/ios"
+    },
+    {
+      "title": "ImageCreator 终止公告",
+      "url": "https://developer.apple.com/news/?id=dz9wvq0r"
+    },
+    {
+      "title": "写作工具系统界面",
+      "url": "https://developer.apple.com/documentation/uikit/uiwritingtoolscoordinator"
+    },
+    {
+      "title": "SpeechTranscriber",
+      "url": "https://developer.apple.com/documentation/speech/speechtranscriber"
+    },
+    {
+      "title": "SiriKit 与现代 App Intents",
+      "url": "https://developer.apple.com/documentation/sirikit"
+    }
+  ]
+}

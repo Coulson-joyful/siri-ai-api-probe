@@ -1,0 +1,13 @@
+{
+  "source": "匿名测试者人工验证反馈",
+  "siriShortcut": {
+    "result": "用户反馈成功",
+    "heardReply": "接口连通性测试成功。这是固定响应，没有调用大模型",
+    "limitation": "仅验证标准 Siri App Shortcut 路由；没有验证 27.3 ToolIntent 新预览或大模型生成"
+  },
+  "writingTools": {
+    "result": "用户反馈成功",
+    "limitation": "未采集实际改写文本或屏幕录像，无法确认模型后端与具体操作种类"
+  },
+  "feedbackDate": "2026-11-10"
+}

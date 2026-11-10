@@ -1,0 +1,37 @@
+{
+  "date" : "2026-11-10",
+  "locale" : "zh_CN",
+  "os" : "27.3",
+  "results" : [
+    {
+      "api" : "AVSpeechSynthesisVoice.speechVoices",
+      "category" : "语音合成",
+      "detail" : "仅列出中文语音资源；不等于每种声音都已实测。",
+      "id" : "tts-voices",
+      "raw" : "com.apple.voice.compact.zh-CN.Tingting:1\ncom.apple.eloquence.zh-CN.Eddy:1\ncom.apple.eloquence.zh-CN.Flo:1\ncom.apple.eloquence.zh-CN.Grandma:1\ncom.apple.eloquence.zh-CN.Grandpa:1\ncom.apple.eloquence.zh-CN.Reed:1\ncom.apple.eloquence.zh-CN.Rocko:1\ncom.apple.eloquence.zh-CN.Sandy:1\ncom.apple.eloquence.zh-CN.Shelley:1\ncom.apple.ttsbundle.siri_Li-mu_zh-CN_compact:1\ncom.apple.ttsbundle.siri_Yu-shu_zh-CN_compact:1\ncom.apple.voice.super-compact.zh-TW.Meijia:1\ncom.apple.eloquence.zh-TW.Eddy:1\ncom.apple.eloquence.zh-TW.Flo:1\ncom.apple.eloquence.zh-TW.Grandma:1\ncom.apple.eloquence.zh-TW.Grandpa:1\ncom.apple.eloquence.zh-TW.Reed:1\ncom.apple.eloquence.zh-TW.Rocko:1\ncom.apple.eloquence.zh-TW.Sandy:1\ncom.apple.eloquence.zh-TW.Shelley:1",
+      "requestSent" : false,
+      "status" : "能力查询完成",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "AVSpeechSynthesizer.write",
+      "category" : "语音合成",
+      "detail" : "配置音频会话后的复测结果：音频生成超时",
+      "id" : "tts-retry",
+      "raw" : "SiriAIProbe.ProbeModel.ProbeError.timeout",
+      "requestSent" : true,
+      "status" : "执行失败",
+      "timestamp" : "2026-11-10"
+    },
+    {
+      "api" : "SpeechAnalyzer + SpeechTranscriber",
+      "category" : "语音识别",
+      "detail" : "所需模型未安装，不自动下载。",
+      "id" : "asr-fixture",
+      "raw" : "supported",
+      "requestSent" : false,
+      "status" : "未执行",
+      "timestamp" : "2026-11-10"
+    }
+  ]
+}
