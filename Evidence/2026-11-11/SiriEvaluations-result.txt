@@ -1,0 +1,8 @@
+SDK: iOS 27.3 / Xcode 27.3 beta 27C5020n
+@AppIntent(.tool): compiled successfully.
+SiriEvaluations module: import/build successful.
+Initial unit target: SiriEvaluationError.notRunningInUITestTarget.
+Corrected UI test target: runner exited with code 74 before establishing connection.
+Independent build directory retry: same XCTestDriverInterface channel refused.
+DDI build 27C5020n: contentIsCompatible=true, isUsable=true.
+No scripted scenario result, no new Siri planning/parameter/entity/cross-app success claim.

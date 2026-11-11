@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-11",
+  "buildSDK": "27.3",
+  "results": [
+    {
+      "api": "translationTask",
+      "category": "翻译",
+      "detail": "准备固定测试语言。",
+      "id": "translation-ui-start",
+      "raw": "",
+      "requestSent": false,
+      "status": "开始执行",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "translationTask",
+      "category": "翻译",
+      "detail": "固定英文句子的实际翻译。",
+      "id": "translation-ui",
+      "raw": "雨后花园很安静。",
+      "requestSent": true,
+      "status": "执行成功",
+      "timestamp": "2026-11-11"
+    }
+  ],
+  "note": "27.3 SDK 构建，用户点击系统翻译按钮后取得输出。直接初始化翻译仍单独记录为 notInstalled。"
+}

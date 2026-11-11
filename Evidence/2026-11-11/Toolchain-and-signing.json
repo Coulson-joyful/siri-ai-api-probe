@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-11",
+  "xcode": "27.3 beta",
+  "xcodeBuild": "27C5020n",
+  "sdk": "iPhoneOS27.3",
+  "device": "iPhone 16 Pro",
+  "os": "27.3",
+  "osBuild": "24C5037i",
+  "siriEntitlementPresent": true,
+  "pccEntitlementPresent": false,
+  "toolIntentMacroCompiled": true,
+  "developerDiskImage": {
+    "buildUpdate": "27C5020n",
+    "contentIsCompatible": true,
+    "isUsable": true
+  },
+  "siriEvaluations": {
+    "moduleImported": true,
+    "uiTargetBuilt": true,
+    "scenarioExecuted": false,
+    "blocker": "Runner exited with code 74 before establishing connection; XCTestDriverInterface channel refused."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-11",
+  "buildSDK": "27.2",
+  "results": [
+    {
+      "api": "translationTask",
+      "category": "翻译",
+      "detail": "固定英文句子的实际翻译。",
+      "id": "translation-ui",
+      "raw": "雨后花园很安静。",
+      "requestSent": true,
+      "status": "执行成功",
+      "timestamp": "2026-11-11"
+    }
+  ],
+  "note": "同日先期测试，UI 下载语言后取得输出；SDK27.3 下直接初始化翻译仍返回 notInstalled，不能合并成所有路径均成功。"
+}

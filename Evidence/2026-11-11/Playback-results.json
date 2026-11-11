@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-11",
+  "locale": "zh_CN",
+  "os": "27.3",
+  "results": [
+    {
+      "api": "INPreferences.siriAuthorizationStatus",
+      "category": "SiriKit",
+      "detail": "仅在主机已核验签名有 Siri entitlement 时执行。",
+      "id": "sirikit-authorized-query",
+      "raw": "0",
+      "requestSent": true,
+      "status": "查询成功",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "AVSpeechSynthesizer.speak",
+      "category": "语音播放",
+      "detail": "仅为进度记录，不代表成功。",
+      "id": "tts-speak-start",
+      "raw": "",
+      "requestSent": false,
+      "status": "开始执行",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "AVSpeechSynthesizer.speak",
+      "category": "语音播放",
+      "detail": "使用固定测试输入。",
+      "id": "tts-speak",
+      "raw": "completed=true; didStart=true\nelapsedSeconds=4.998080015182495",
+      "requestSent": true,
+      "status": "执行成功",
+      "timestamp": "2026-11-11"
+    }
+  ],
+  "buildSDK": "27.3",
+  "xcodeBuild": "27C5020n"
+}

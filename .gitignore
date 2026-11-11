@@ -14,3 +14,7 @@ xcuserdata/
 .env.*
 *.app/
 *.ipa
+*.xcresult/
+*.xcactivitylog
+*.ips
+Local.xcconfig

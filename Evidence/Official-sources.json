@@ -1,5 +1,5 @@
 {
-  "checkedDate": "2026-11-10",
+  "checkedDate": "2026-11-11",
   "sources": [
     {
       "title": "Apple Intelligence 地区说明",
@@ -56,6 +56,22 @@
     {
       "title": "SiriKit 与现代 App Intents",
       "url": "https://developer.apple.com/documentation/sirikit"
+    },
+    {
+      "title": "Xcode SDK 对应版本",
+      "url": "https://developer.apple.com/xcode/system-requirements"
+    },
+    {
+      "title": "多模态图像理解",
+      "url": "https://developer.apple.com/documentation/foundationmodels/analyzing-images-with-multimodal-prompting"
+    },
+    {
+      "title": "PCC 推理档位与请求条件",
+      "url": "https://developer.apple.com/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute"
+    },
+    {
+      "title": "动态会话与 Profile",
+      "url": "https://developer.apple.com/documentation/foundationmodels/composing-dynamic-sessions-with-instructions-and-profiles"
     }
   ]
 }

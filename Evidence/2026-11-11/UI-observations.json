@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-11",
+  "source": "通过 Device Hub 对目标 iPhone 的界面观察",
+  "results": [
+    {
+      "id": "image-playground-ui",
+      "status": "本机不可用",
+      "output": "“图乐园”不可用；“图乐园”在此 iPhone 上不可用。",
+      "scope": "实际打开系统图片生成界面，没有生成图片。"
+    },
+    {
+      "id": "shortcuts-model-search",
+      "status": "未找到模型动作入口",
+      "input": "在新建快捷指令的动作搜索中输入“模型”",
+      "output": "结果列表为空",
+      "scope": "On-Device、Cloud、Cloud Pro、Extension Model 和 Broad World Knowledge 没有逐一请求；不能声称这些模型都被调用后失败。"
+    }
+  ]
+}

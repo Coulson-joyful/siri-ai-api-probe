@@ -3,7 +3,7 @@ import FoundationModels
 import Speech
 import AVFoundation
 import ImagePlayground
-import Translation
+@preconcurrency import Translation
 import AppIntents
 import UIKit
 
@@ -29,6 +29,7 @@ struct ProbeReport: Codable {
     @Guide(description: "简体中文的一句简短问候") var greeting: String
 }
 
+@AppIntent(.tool)
 struct ConnectivityIntent: AppIntent {
     static let title: LocalizedStringResource = "接口连通性测试"
     static let description = IntentDescription("仅写入测试时间并返回固定文字，不调用任何大模型。")
@@ -56,9 +57,9 @@ struct ProbeShortcuts: AppShortcutsProvider {
     var running = false
     var current = "等待开始"
     var reportURL: URL?
-    private let synth = AVSpeechSynthesizer()
+    let synth = AVSpeechSynthesizer()
     private var reportName: String {
-        ProcessInfo.processInfo.arguments.contains("--audio-fixture") ? "SiriAI-audio-results.json" : "SiriAI-results.json"
+        ProcessInfo.processInfo.arguments.contains("--playback-only") ? "SiriAI-playback-results.json" : ProcessInfo.processInfo.arguments.contains("--extended") ? "SiriAI-extended-results.json" : ProcessInfo.processInfo.arguments.contains("--audio-fixture") ? "SiriAI-audio-results.json" : "SiriAI-results.json"
     }
 
     static func documents() throws -> URL {
@@ -131,89 +132,9 @@ struct ProbeShortcuts: AppShortcutsProvider {
         }
     }
 
-    func run() async {
-        guard !running else { return }
-        running = true; results = []; defer { running = false; current = "本轮测试结束"; save() }
-        current = "端侧模型"
-        await testSystem("system-default", model: .default)
-        await testSystem("system-general", model: SystemLanguageModel(useCase: .general))
-        await testSystem("system-tagging", model: SystemLanguageModel(useCase: .contentTagging))
-        current = "Private Cloud Compute"
-        let pcc = PrivateCloudComputeLanguageModel()
-        add("pcc", "PrivateCloudComputeLanguageModel.availability", "大模型", "权限受限",
-            "本测试签名未包含 PCC 专用权限；仅查询状态，不发送云端生成。无法独立归因地区限制。",
-            String(describing: pcc.availability))
-        add("pcc-permission", "com.apple.developer.private-cloud-compute", "签名权限", "未配置",
-            "当前普通开发签名不含托管权限；以主机 codesign 导出的签名与 provisioning profile 为证。")
+    func run() async { await runExtended() }
 
-        current = "系统功能与语音"
-        add("writing-tools", "UIWritingToolsCoordinator.isWritingToolsAvailable", "系统 AI 界面",
-            UIWritingToolsCoordinator.isWritingToolsAvailable ? "可用性为真" : "可用性为假",
-            "仅查询系统写作工具 UI 可用性，不等于完成改写或摘要。",
-            String(UIWritingToolsCoordinator.isWritingToolsAvailable))
-        add("image-playground", "ImagePlaygroundViewController.isAvailable", "系统 AI 界面",
-            ImagePlaygroundViewController.isAvailable ? "可用性为真" : "可用性为假",
-            "仅查询图乐园界面资格，不生成图片。", String(ImagePlaygroundViewController.isAvailable))
-        let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "zh-CN"))
-        add("legacy-speech", "SFSpeechRecognizer(zh-CN)", "语音识别", "能力查询完成",
-            "没有申请语音识别权限，也未启动旧版识别；支持标记不是转写成功证据。",
-            "isAvailable=\(recognizer?.isAvailable.description ?? "nil"), supportsOnDeviceRecognition=\(recognizer?.supportsOnDeviceRecognition.description ?? "nil"), authorizationStatus=\(SFSpeechRecognizer.authorizationStatus().rawValue)")
-        let supported = await SpeechTranscriber.supportedLocale(equivalentTo: Locale(identifier: "zh-CN"))
-        let installed = await SpeechTranscriber.installedLocales
-        add("speech-transcriber", "SpeechTranscriber", "语音识别", "能力查询完成",
-            "查询硬件、中文等价地区与已安装模型；不自动下载模型。",
-            "isAvailable=\(SpeechTranscriber.isAvailable), supportedChinese=\(supported?.identifier ?? "nil"), installedLocales=\(installed.map(\.identifier).joined(separator: ","))")
-        let dictationLocale = await DictationTranscriber.supportedLocale(equivalentTo: Locale(identifier: "zh-CN"))
-        let dictationInstalled = await DictationTranscriber.installedLocales
-        add("dictation-transcriber", "DictationTranscriber", "语音识别", "能力查询完成",
-            "查询听写模型中文支持与已安装语言；本项未运行听写。",
-            "supportedChinese=\(dictationLocale?.identifier ?? "nil"), installedLocales=\(dictationInstalled.map(\.identifier).joined(separator: ","))")
-        add("sirikit", "INPreferences", "旧版 SiriKit", "缺少 Siri 权限",
-            "负例实测：未配置 com.apple.developer.siri 时调用触发系统异常。此为签名要求，不是地区错误；本轮跳过该调用。",
-            "NSInternalInconsistencyException: requires the entitlement com.apple.developer.siri")
-        let translation = await LanguageAvailability().status(from: Locale.Language(identifier: "en"), to: Locale.Language(identifier: "zh-Hans"))
-        add("translation", "LanguageAvailability.status(en→zh-Hans)", "翻译", "能力查询完成",
-            "仅查询翻译资源状态，不等于翻译请求成功，也不是 Siri 模型接口。", String(describing: translation))
-        do {
-            current = "中文语音合成"
-            let url = try Self.documents().appendingPathComponent("Synthetic-speech-zh.caf")
-            let voice = AVSpeechSynthesisVoice(language: "zh-CN")
-            guard let voice else { throw ProbeError.noVoice }
-            let info = try await synthesize(url: url, voice: voice)
-            add("tts", "AVSpeechSynthesizer.write", "语音合成", info.frames > 0 ? "执行成功" : "返回空音频",
-                "固定句子：你好，这是中文语音接口测试。写入音频缓冲区与文件，没有使用麦克风。",
-                "voice=\(voice.identifier), frames=\(info.frames), sampleRate=\(info.rate), duration=\(Double(info.frames) / max(info.rate, 1))", sent: true)
-            if let supported, SpeechTranscriber.isAvailable {
-                let transcriber = SpeechTranscriber(locale: supported, preset: .transcription)
-                let assetStatus = await AssetInventory.status(forModules: [transcriber])
-                if assetStatus == .installed {
-                    current = "本地中文语音转写"
-                    let text = try await transcribe(url: url, transcriber: transcriber)
-                    add("speech-transcription", "SpeechAnalyzer + SpeechTranscriber", "语音识别",
-                        text.isEmpty ? "返回空文本" : "执行成功", "仅转写刚生成的固定合成音频。", text, sent: true)
-                } else {
-                    add("speech-transcription", "SpeechAnalyzer + SpeechTranscriber", "语音识别", "未执行",
-                        "中文语音模型未安装完成，没有自动下载。", String(describing: assetStatus))
-                }
-            } else {
-                add("speech-transcription", "SpeechAnalyzer + SpeechTranscriber", "语音识别", "未执行", "中文模型或设备支持条件未满足。")
-            }
-        } catch {
-            add("speech-execution-error", "TTS / SpeechAnalyzer", "语音执行", "执行失败", error.localizedDescription, String(reflecting: error), sent: true)
-        }
-        current = "App Intents"
-        do {
-            _ = try await ConnectivityIntent().perform()
-            add("intent-handler", "ConnectivityIntent.perform()", "Siri 操作入口", "代码直调成功",
-                "直接调用 AppIntent 处理函数并写入事件。不能据此认定 Siri 语音或快捷指令执行成功。", "Intent-events.json 已新增基线事件", sent: true)
-        } catch {
-            add("intent-handler", "ConnectivityIntent.perform()", "Siri 操作入口", "执行失败", error.localizedDescription)
-        }
-        add("siri-voice", "Siri → App Shortcut → AppIntent", "Siri 操作入口", "待人工触发",
-            "请对 Siri 说：用AI接口检测执行接口连通性测试。需结合 Siri 响应与新增事件确认，不把代码直调当作语音验收。")
-    }
-
-    private func testSystem(_ id: String, model: SystemLanguageModel) async {
+    func testSystem(_ id: String, model: SystemLanguageModel) async {
         let available = model.isAvailable
         let caps = model.capabilities
         let raw = "availability=\(model.availability); zh-Hans-CN=\(model.supportsLocale(Locale(identifier: "zh-Hans-CN"))); en-US=\(model.supportsLocale(Locale(identifier: "en-US"))); guidedGeneration=\(caps.contains(.guidedGeneration)); toolCalling=\(caps.contains(.toolCalling)); vision=\(caps.contains(.vision)); reasoning=\(caps.contains(.reasoning))"
@@ -237,7 +158,7 @@ struct ProbeShortcuts: AppShortcutsProvider {
         }
     }
 
-    private func transcribe(url: URL, transcriber: SpeechTranscriber) async throws -> String {
+    func transcribe(url: URL, transcriber: SpeechTranscriber) async throws -> String {
         let analyzer = SpeechAnalyzer(modules: [transcriber])
         let timeout = Task {
             do { try await Task.sleep(for: .seconds(25)); await analyzer.cancelAndFinishNow() }
@@ -257,7 +178,7 @@ struct ProbeShortcuts: AppShortcutsProvider {
         }
     }
 
-    private func synthesize(url: URL, voice: AVSpeechSynthesisVoice) async throws -> AudioInfo {
+    func synthesize(url: URL, voice: AVSpeechSynthesisVoice) async throws -> AudioInfo {
         let sink = AudioSink(url: url)
         return try await withCheckedThrowingContinuation { continuation in
             sink.continuation = continuation
@@ -317,6 +238,8 @@ final class AudioSink: @unchecked Sendable {
 struct ProbeView: View {
     @State private var model = ProbeModel()
     @State private var sampleText = "今天我们完成了一次系统接口检查。接下来会核对每项结果，并把需要继续验证的功能整理成清单。"
+    @State private var translationConfig: TranslationSession.Configuration?
+    @State private var showImagePlayground = false
     var body: some View {
         NavigationStack {
             List {
@@ -325,6 +248,16 @@ struct ProbeView: View {
                     Text(model.current).foregroundStyle(.secondary)
                     Button(model.running ? "测试进行中…" : "重新运行检查") { Task { await model.run() } }.disabled(model.running)
                     if let url = model.reportURL { ShareLink("导出原始 JSON 报告", item: url) }
+                }
+                Section("补测与固定样本") {
+                    Button("运行扩展补测") { Task { await model.runExtended() } }.disabled(model.running)
+                    Button("执行英中翻译（允许下载语言）") {
+                        translationConfig = TranslationSession.Configuration(source: Locale.Language(identifier: "en"), target: Locale.Language(identifier: "zh-Hans"))
+                    }
+                    Button("打开图乐园固定样本") { showImagePlayground = true }
+                    Button("复制模型搜索词") { UIPasteboard.general.string = "模型" }
+                    Button("复制 Siri 连通性指令") { UIPasteboard.general.string = "用AI接口检测执行接口连通性测试" }
+                    Button("复制固定提示词") { UIPasteboard.general.string = "用一句简体中文描述雨后的花园。" }
                 }
                 Section("Siri 连通性人工测试") {
                     Text("对 Siri 说：用AI接口检测执行接口连通性测试。成功响应应说明这是固定响应，没有调用大模型。")
@@ -343,9 +276,24 @@ struct ProbeView: View {
                 }
             }
             .navigationTitle("Siri AI 接口检测")
+            .imagePlaygroundSheet(isPresented: $showImagePlayground, concepts: [.text("雨后的花园")]) { url in
+                model.add("image-ui-output", "Image Playground sheet", "图像生成", "取得图片", "用户通过系统界面完成生成并选择图片。", "fileBytes=\((try? Data(contentsOf: url).count) ?? 0)", sent: true)
+            }
+            .translationTask(translationConfig) { session in
+                model.add("translation-ui-start", "translationTask", "翻译", "开始执行", "准备固定测试语言。")
+                do {
+                    try await session.prepareTranslation()
+                    let response = try await session.translate("The garden is quiet after the rain.")
+                    model.add("translation-ui", "translationTask", "翻译", "执行成功", "固定英文句子的实际翻译。", response.targetText, sent: true)
+                } catch {
+                    model.add("translation-ui", "translationTask", "翻译", "执行失败", error.localizedDescription, String(reflecting: error), sent: true)
+                }
+            }
             .task {
-                if model.results.isEmpty {
-                    if ProcessInfo.processInfo.arguments.contains("--audio-fixture") { await model.runAudioFixture() }
+                if model.results.isEmpty && !ProcessInfo.processInfo.arguments.contains("--ui-only") && ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
+                    if ProcessInfo.processInfo.arguments.contains("--playback-only") { await model.runPlaybackAndSiriKit() }
+                    else if ProcessInfo.processInfo.arguments.contains("--extended") { await model.runExtended() }
+                    else if ProcessInfo.processInfo.arguments.contains("--audio-fixture") { await model.runAudioFixture() }
                     else { await model.run() }
                 }
             }

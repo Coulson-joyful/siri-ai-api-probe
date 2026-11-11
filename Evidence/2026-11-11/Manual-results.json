@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-11",
+  "siri": {
+    "passed": false,
+    "status": "这次还在等手机上的操作结果",
+    "detail": "已请用户重新用 Siri 运行固定连通性指令；本轮完整回复尚未收到。11 月 10 日的成功反馈仅保留为历史结果。"
+  },
+  "writingTools": {
+    "passed": false,
+    "status": "系统显示支持，具体操作仍待反馈",
+    "detail": "本轮查询 isWritingToolsAvailable=true；已请用户提供一次润色或摘要的操作名和生成文字，尚未收到。11 月 10 日的成功反馈不替代本轮输出。"
+  }
+}
