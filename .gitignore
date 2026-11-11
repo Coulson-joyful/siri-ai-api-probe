@@ -18,3 +18,5 @@ xcuserdata/
 *.xcactivitylog
 *.ips
 Local.xcconfig
+__pycache__/
+*.pyc

@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-11",
+  "environment": "physical",
+  "device": "iPhone 16 Pro",
+  "os": "27.3",
+  "osBuild": "24C5037i",
+  "qwen": {
+    "settingsEntryVisible": true,
+    "enabled": true,
+    "accountSignedIn": true,
+    "testPath": "普通 Siri 的文字输入，明确请求千问回答",
+    "input": "请千问计算17加25，只回复数字。",
+    "requestSent": true,
+    "providerLabelVisible": "千问",
+    "output": "42",
+    "expected": "42",
+    "passed": true,
+    "limitation": "仅验证一个固定文字问题；未验证图片、文档、写作创作或开发者直接调用接口。账户标识不公开。"
+  },
+  "siriAI": {
+    "tested": false,
+    "reason": "当前中国区 Beta 不包含新版 Siri AI，本轮不测试。普通 Siri 的千问扩展不等于 Siri AI。"
+  },
+  "chatGPT": {
+    "tested": false,
+    "reason": "中国区任务，本轮不纳入 ChatGPT 测试。"
+  },
+  "writingTools": {
+    "entryVisible": true,
+    "operation": "改写",
+    "selectedText": "完成",
+    "context": "今天我们完成了一次系统接口检查。接下来会核对每项结果，并把需要继续验证的功能整理成清单。",
+    "resultUI": "显示“改写”“AI生成”、原文/改写切换及完成按钮",
+    "visibleTextAfterRewrite": "今天我们完成了一次系统接口检查。接下来会核对每项结果，并把需要继续验证的功能整理成清单。",
+    "textChanged": false,
+    "conclusion": "系统界面改写流程可运行；本次未观察到文字变化，未确认后端模型，不宣称生成质量通过。"
+  }
+}

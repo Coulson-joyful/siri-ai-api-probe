@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-11",
+  "locale": "zh-Hans_GB@rg=cnzzzz",
+  "os": "27.3",
+  "results": [
+    {
+      "api": "SystemLanguageModel.default",
+      "category": "大模型",
+      "detail": "能力标记仅表示模型声明，不能替代真实请求。",
+      "id": "system-default",
+      "raw": "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent": false,
+      "status": "资格不通过",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "respond / streamResponse / @Generable / Tool",
+      "category": "模型调用方式",
+      "detail": "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id": "system-default-generate",
+      "raw": "",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "SystemLanguageModel(useCase: .general)",
+      "category": "大模型",
+      "detail": "能力标记仅表示模型声明，不能替代真实请求。",
+      "id": "system-general",
+      "raw": "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent": false,
+      "status": "资格不通过",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "respond / streamResponse / @Generable / Tool",
+      "category": "模型调用方式",
+      "detail": "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id": "system-general-generate",
+      "raw": "",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "SystemLanguageModel(useCase: .contentTagging)",
+      "category": "大模型",
+      "detail": "能力标记仅表示模型声明，不能替代真实请求。",
+      "id": "system-tagging",
+      "raw": "availability=unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady); zh-Hans-CN=true; en-US=true; guidedGeneration=true; toolCalling=true; vision=true; reasoning=false",
+      "requestSent": false,
+      "status": "资格不通过",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "respond / streamResponse / @Generable / Tool",
+      "category": "模型调用方式",
+      "detail": "这些是同一模型的调用方式，不是四个独立模型；可用性检查未通过，均未发送生成。",
+      "id": "system-tagging-generate",
+      "raw": "",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "streamResponse",
+      "category": "端侧模型能力",
+      "detail": "本轮端侧模型资格未通过，没有请求输出。",
+      "id": "stream",
+      "raw": "unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "Tool",
+      "category": "端侧模型能力",
+      "detail": "本轮端侧模型资格未通过，没有请求输出。",
+      "id": "tool",
+      "raw": "unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "Attachment + image",
+      "category": "端侧模型能力",
+      "detail": "本轮端侧模型资格未通过，没有请求输出。",
+      "id": "vision",
+      "raw": "unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "DynamicProfile",
+      "category": "端侧模型能力",
+      "detail": "本轮端侧模型资格未通过，没有请求输出。",
+      "id": "profile",
+      "raw": "unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.modelNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "PrivateCloudComputeLanguageModel",
+      "category": "云端模型",
+      "detail": "需要同时满足托管权限与受支持分发条件；本轮没有为账号申请新资格。",
+      "id": "pcc",
+      "raw": "unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.systemNotReady)",
+      "requestSent": false,
+      "status": "资格不通过",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "PCC reasoning light",
+      "category": "云端推理",
+      "detail": "PCC 本轮资格未通过，未发送该档位请求。",
+      "id": "pcc-light",
+      "raw": "unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.systemNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "PCC reasoning moderate",
+      "category": "云端推理",
+      "detail": "PCC 本轮资格未通过，未发送该档位请求。",
+      "id": "pcc-moderate",
+      "raw": "unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.systemNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "PCC reasoning deep",
+      "category": "云端推理",
+      "detail": "PCC 本轮资格未通过，未发送该档位请求。",
+      "id": "pcc-deep",
+      "raw": "unavailable(FoundationModels.PrivateCloudComputeLanguageModel.Availability.UnavailableReason.systemNotReady)",
+      "requestSent": false,
+      "status": "前置阻断",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "UIWritingToolsCoordinator",
+      "category": "写作工具",
+      "detail": "实际改写另由系统 UI 验证。",
+      "id": "writing-tools",
+      "raw": "false",
+      "requestSent": false,
+      "status": "可用性为假",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "ImagePlaygroundViewController",
+      "category": "图像生成",
+      "detail": "实际打开界面另行验证。",
+      "id": "image-playground",
+      "raw": "false",
+      "requestSent": false,
+      "status": "可用性为假",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "SpeechAnalyzer + DictationTranscriber",
+      "category": "听写",
+      "detail": "仅为进度记录，不代表成功。",
+      "id": "dictation-start",
+      "raw": "",
+      "requestSent": false,
+      "status": "开始执行",
+      "timestamp": "2026-11-11"
+    },
+    {
+      "api": "SpeechAnalyzer + DictationTranscriber",
+      "category": "听写",
+      "detail": "Audio format is not supported",
+      "id": "dictation",
+      "raw": "Error Domain=SFSpeechErrorDomain Code=3 \"Audio format is not supported\" UserInfo={NSLocalizedDescription=Audio format is not supported}; elapsedSeconds=31.613295078277588",
+      "requestSent": true,
+      "status": "执行失败",
+      "timestamp": "2026-11-11"
+    }
+  ],
+  "environment": "iOS 27.3 Simulator, initial state before Apple Intelligence setup",
+  "buildSDK": "27.3"
+}

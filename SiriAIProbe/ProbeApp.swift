@@ -258,6 +258,7 @@ struct ProbeView: View {
                     Button("复制模型搜索词") { UIPasteboard.general.string = "模型" }
                     Button("复制 Siri 连通性指令") { UIPasteboard.general.string = "用AI接口检测执行接口连通性测试" }
                     Button("复制固定提示词") { UIPasteboard.general.string = "用一句简体中文描述雨后的花园。" }
+                    Button("复制千问测试问题") { UIPasteboard.general.string = "请千问计算17加25，只回复数字。" }
                 }
                 Section("Siri 连通性人工测试") {
                     Text("对 Siri 说：用AI接口检测执行接口连通性测试。成功响应应说明这是固定响应，没有调用大模型。")

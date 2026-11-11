@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-11",
+  "environment": "simulator",
+  "os": "27.3",
+  "osBuild": "24C5037i",
+  "qwen": {
+    "settingsEntryVisible": true,
+    "opened": true,
+    "setupPage": "blank",
+    "loginCompleted": false,
+    "requestSent": false,
+    "responseReceived": false,
+    "conclusion": "已找到千问系统扩展入口；本模拟器未完成服务可用性测试，不能判断真机或整个中国区不可用。"
+  },
+  "siriAI": {
+    "tested": false,
+    "reason": "中国区首批 Beta 不包含 Siri AI，用户明确要求不测试。"
+  },
+  "chatGPT": {
+    "tested": false,
+    "reason": "本轮不纳入测试。"
+  }
+}

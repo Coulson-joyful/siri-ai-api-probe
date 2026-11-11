@@ -27,5 +27,22 @@
     "Translation installedSource direct session: notInstalled"
   ],
   "evidenceDirectory": "2026-11-11",
-  "historicalSummary": "2026-11-10/Test-summary.json"
+  "historicalSummary": "2026-11-10/Test-summary.json",
+  "reportRevision": {
+    "date": "2026-11-11",
+    "scope": "Apple Intelligence；不测试 Siri AI 或 ChatGPT",
+    "environments": [
+      "physical iPhone 16 Pro iOS 27.3 Beta",
+      "isolated iPhone 16 Pro Simulator iOS 27.3"
+    ],
+    "categories": [
+      "用户可直接调用",
+      "开发者可调用",
+      "中国大陆限制不可用"
+    ],
+    "currentMatrix": "2026-11-11/Callability-matrix.json",
+    "physicalQwen": "2026-11-11/Physical-UI-current.json",
+    "simulatorExecutableCheck": "2026-11-11/Simulator-subagent-results.json",
+    "correction": "首批中国区 Beta 已开放部分功能与千问，不能再据通用支持页写中国区全部尚未开放。"
+  }
 }

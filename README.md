@@ -1,5 +1,18 @@
 # Siri AI API Probe
 
+## 当前报告口径（2026-11-11 修订）
+
+本轮测试对象是 **Apple Intelligence**。真机千问问答已通过：普通 Siri 提交固定算术题，提供方标记为千问，返回 42；模拟器千问仅发现设置入口，未完成服务调用。中国区首批 27.3 Beta 不包含新版 Siri AI；不运行 Siri AI 或 ChatGPT 测试。中国区千问是系统扩展入口，与 App 直接调用 Apple 设备端模型或 PCC 分开测试。
+
+- 真机：国行 iPhone 16 Pro，iOS 27.3 Beta（24C5037i）。
+- 模拟器：独立 iPhone 16 Pro，iOS 27.3（24C5037i）。模拟器结果不替代真机结论。
+- 报告按“用户可直接调用”“开发者可调用”“中国大陆限制不可用”分类，可切换测试环境。
+- 子智能体已完成模拟器独立可执行探针；同一探针另在真机执行配置检查和最新状态查询。配置构造与真实生成分别判定，记录见 `Physical-code-results.json`、`Physical-configuration-results.json`、`Simulator-subagent-results.json`。
+- 模型资格未通过时，后续生成子函数是未执行，不是已被单独拒绝。参数构造、字段读写和宏能否编译运行，另外检查。
+- “调用完成”和“输出正确”分开。资源、连接、测试实现缺口不当作地区限制。
+
+以 [Apple 中国区专项公告](https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/) 核对首批 Beta 范围，纠正此前仅据通用支持页推断中国区全部未开放的表述。下文保留历史测试说明，最新结论以报告和按环境标注的证据为准。
+
 独立检查 Siri／Apple Intelligence 公开接口的 SwiftUI 真机工具，报告按三类呈现：用户可直接使用的功能、开发者可以调用的模型／参数／函数，以及中国大陆的官方开放限制。每项保留 2026-11-11 的实测结果和未完成项。最新使用 **Xcode 27.3 beta（27C5020n）／iOS 27.3 SDK**；最低部署版本为 iOS 27.3。
 
 - [HTML 报告](report.html)：下载后可离线阅读，支持用途搜索、结果筛选和打印。
@@ -74,3 +87,13 @@ python3 Scripts/render_report.py
 渲染脚本只读取公开证据，校验行数、列数、锚点与已知个人标识；不会读取原始诊断包。原始崩溃日志、Xcode 运行器诊断包、个人签名配置不应提交。
 
 本次结果仅对应目标设备、系统、语言、资源和签名条件。没有更改账号／地区／语言，没有非大陆对照组，没有得出所有中国大陆设备统一可用性的结论。系统产品功能目录也没有整体逐项验收。
+
+### 复跑模拟器独立检查
+
+使用 Xcode 27.3，并传入已启动的 27.3 模拟器编号：
+
+```sh
+DEVELOPER_DIR=/path/to/Xcode.app/Contents/Developer bash Scripts/run_simulator_api_check.sh BOOTED_SIMULATOR_ID
+```
+
+脚本在临时副本构建独立测试 App，不替换主测试 App。固定断言检查参数读写、schema、工具业务函数；模型可用时才执行有超时和输出核对的生成用例。完成标志缺失时不会将旧 JSON 当作新结果。

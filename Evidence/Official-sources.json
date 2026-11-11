@@ -2,6 +2,11 @@
   "checkedDate": "2026-11-11",
   "sources": [
     {
+      "title": "中国区首批 Apple Intelligence 与千问专项公告（2026-10-31；11-04 起 Beta）",
+      "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/",
+      "scope": "修正仅据通用支持页推断中国区全部未开放的旧结论；首批不含 Siri AI。"
+    },
+    {
       "title": "Apple Intelligence 地区说明",
       "url": "https://support.apple.com/zh-cn/121115"
     },
